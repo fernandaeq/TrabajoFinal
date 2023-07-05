@@ -1,7 +1,7 @@
 function App() {
   return (
     <>
-      <h1>Ecommerce</h1>
+      <h1>Hola soy un titulo</h1>
     </>
   );
 }
