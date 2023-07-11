@@ -1,7 +1,9 @@
+import Main from "./components/screen/Main";
+
 function App() {
   return (
     <>
-      <h1>Hola soy un titulo</h1>
+      <Main />
     </>
   );
 }

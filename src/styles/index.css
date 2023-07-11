@@ -1,0 +1,23 @@
+.row {
+  display: flex;
+  flex-direction: row;
+}
+.col {
+  display: flex;
+  flex-direction: column;
+}
+.inLineBlock {
+  display: inline-block;
+}
+.card {
+  background-color: cadetblue;
+  border-radius: 8px;
+  padding: 4px;
+  margin: 4px;
+}
+
+/* ul > li {
+  padding: 4px;
+  background-color: bisque;
+  border-radius: 8px;
+} */
