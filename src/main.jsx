@@ -2,32 +2,38 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import App from "./App.jsx";
-import Categories from "./components/screen/Categories/index.jsx";
-import Products from "./components/screen/Products/index.jsx";
-import Categorie from "./components/screen/Categorie/index.jsx";
+import CategorieList from "./components/screen/CategorieList/index.jsx";
+import Categorie from "./components/screen/CategorieDetail/index.jsx";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import ProductList from "./components/screen/ProductList/index.jsx";
 
+const queryClient = new QueryClient();
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
   },
   {
-    path: "/categories",
-    element: <Categories />,
+    path: "/categorieList",
+    element: <CategorieList />,
   },
   {
-    path: "/categorie/:id",
+    path: "/categorieDetail/:id",
     element: <Categorie />,
   },
   {
-    path: "/products",
-    element: <Products />,
+    path: "/productList",
+    element: <ProductList />,
   },
   //mas rutas...
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <QueryClientProvider client={queryClient}>
+      <RouterProvider router={router} />
+      <ReactQueryDevtools />
+    </QueryClientProvider>
   </React.StrictMode>
 );

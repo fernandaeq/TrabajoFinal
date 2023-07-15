@@ -6,7 +6,6 @@ function Main() {
   return (
     <div>
       <h1>HomePage</h1>
-      <NavBar />
       <p>Aca puede ir una descripcion</p>
     </div>
   );

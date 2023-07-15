@@ -12,7 +12,7 @@ function NavBar() {
         </li>
         <li>
           <button>
-            <Link to="/categories">Categories</Link>
+            <Link to="/categorieList">Categories</Link>
           </button>
         </li>
         <li>

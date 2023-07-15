@@ -1,15 +1,15 @@
-import React, { useEffect, useState } from "react";
-import { getDataFromAPI } from "../../../helpers";
+import React from "react";
+import { useQuery } from "@tanstack/react-query";
 
-function Products({ url }) {
-  const [products, setProducts] = useState([]);
+function ProductList({ url }) {
+  const { isLoading, error, isFetched, isFetching, data } = useQuery({
+    queryKey: ["fetchProducts", url],
+    queryFn: () => fetch(url).then((res) => res.json()),
+  });
 
-  useEffect(() => {
-    getDataFromAPI(url, setProducts);
-  }, [url]);
   return (
     <div>
-      {products?.map((product) => {
+      {data?.map((product) => {
         return (
           <div className="inLineBlock card" key={product.id}>
             <p>{product.title}</p>
@@ -24,8 +24,9 @@ function Products({ url }) {
           </div>
         );
       })}
+      {isLoading && <p>Cargando</p>}
     </div>
   );
 }
 
-export default Products;
+export default ProductList;
