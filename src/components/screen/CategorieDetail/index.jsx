@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 
+//TODO: remove this component
 function CategorieDetail() {
   const { id } = useParams();
-  const [products, setProducts] = useState([]);
   const url = `https://api.escuelajs.co/api/v1/categories/${id}/products`;
-  const { isLoading, error, data } = useQuery("repoData", () =>
+  const { isLoading, data } = useQuery("repoData", () =>
     fetch(url).then((res) => res.json())
   );
 
@@ -18,7 +18,7 @@ function CategorieDetail() {
       ) : (
         data?.map((product) => {
           return (
-            <div className="inLineBlock card" key={product.id}>
+            <div className="inlineBlock card" key={product.id}>
               <p>{product.title}</p>
               <p>$ {product.price}</p>
             </div>

@@ -1,23 +1,88 @@
 .row {
   display: flex;
   flex-direction: row;
+  margin: 0px;
+  padding: 0px;
 }
 .col {
   display: flex;
   flex-direction: column;
+  margin: 0px;
+  padding: 0px;
 }
-.inLineBlock {
+.inlineBlock {
   display: inline-block;
 }
 .card {
-  background-color: cadetblue;
+  font-size: 14px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  width: 100px;
+  background-color: #ede4ff;
   border-radius: 8px;
   padding: 4px;
   margin: 4px;
+  box-shadow: 0px 4px 8px black;
 }
-
-/* ul > li {
-  padding: 4px;
-  background-color: bisque;
+img {
   border-radius: 8px;
-} */
+}
+a {
+  color: black;
+  text-decoration: none;
+  margin: 4px;
+  padding: 4px;
+}
+a:hover {
+  border-radius: 4px;
+  background-color: #6528f7;
+  padding: 4px;
+}
+.active {
+  background-color: #a076f9;
+  color: black;
+  text-decoration: none;
+  border-radius: 4px;
+  padding: 4px;
+}
+.navLink {
+  background-color: antiquewhite;
+  border-radius: 4px;
+  padding: 4px;
+  border-radius: 8px;
+  color: black;
+}
+.btn {
+  background-color: #ede4ff;
+  padding: 4px;
+  border-radius: 4px;
+  margin: 4px;
+}
+.btn:hover {
+  background-color: #6528f7;
+}
+* {
+  font-family: Arial, Helvetica, sans-serif;
+}
+.loginCard {
+  display: flex;
+  padding-bottom: 20px;
+  margin: 20px 30% 0px;
+  flex-direction: column;
+  align-items: center;
+  background-color: #ede4ff;
+  border-radius: 8px;
+  border: solid 1px black;
+}
+.imgLogin {
+  margin-top: -20px;
+  background-color: #a076f9;
+  border-radius: 50%;
+  padding: 4px;
+  border: solid 1px black;
+}
+.loginLabel {
+  margin: 8px 0px;
+  text-align: center;
+}

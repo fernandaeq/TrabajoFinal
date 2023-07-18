@@ -1,30 +1,29 @@
 import React from "react";
 import { useQuery } from "@tanstack/react-query";
+import { fetchData } from "../../../helpers";
+import ProductDetail from "../ProductDetail";
 
+/**
+ *
+ * @name ProductList
+ * @description this component render a list of products
+ */
 function ProductList({ url }) {
-  const { isLoading, error, isFetched, isFetching, data } = useQuery({
+  const { isLoading, data } = useQuery({
     queryKey: ["fetchProducts", url],
-    queryFn: () => fetch(url).then((res) => res.json()),
+    queryFn: () => fetchData(url),
   });
 
   return (
     <div>
       {data?.map((product) => {
+        const { title, images, price, id } = product;
+
         return (
-          <div className="inLineBlock card" key={product.id}>
-            <p>{product.title}</p>
-            <p>$ {product.price}</p>
-            <img
-              src={product.images[0]}
-              alt={product.title}
-              width={100}
-              height={100}
-            />
-            <p>{product.id}</p>
-          </div>
+          <ProductDetail title={title} img={images[0]} price={price} key={id} />
         );
       })}
-      {isLoading && <p>Cargando</p>}
+      {isLoading && <p>Cargando...</p>}
     </div>
   );
 }
