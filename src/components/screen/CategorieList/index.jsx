@@ -3,7 +3,13 @@ import { useQuery } from "@tanstack/react-query";
 import ProductList from "../ProductList";
 import NavBar from "../../organisms/NavBar";
 import { fetchData } from "../../../helpers";
+import Filters from "../../organisms/Filters";
 
+/**
+ *
+ * @name CategorieList
+ * @description componete in charge of render a list of categories
+ */
 function CategorieList() {
   const [displayProducts, setDisplayProducts] = useState(false);
   const [urlProducts, setUrlProducts] = useState("");
@@ -15,16 +21,10 @@ function CategorieList() {
 
   return (
     <div>
-      <h1>Categorias</h1>
       <NavBar />
+      <h1>Categorias</h1>
+
       <ul className="row" style={{ listStyle: "none" }}>
-        <button
-          onClick={() => {
-            setUrlProducts("https://api.escuelajs.co/api/v1/products");
-          }}
-        >
-          clear
-        </button>
         {isLoading && <p>Cargando categorias...</p>}
         {error && <p>Ocurrio un error</p>}
         {data?.map((categorie) => {
@@ -38,14 +38,18 @@ function CategorieList() {
                 setDisplayProducts(true);
               }}
             >
-              <button style={{ width: "200px", maxHeight: "30px" }}>
-                {categorie.name}
-              </button>
+              <h3 className="btn">{categorie.name}</h3>
             </li>
           );
         })}
       </ul>
-      {displayProducts && <ProductList url={urlProducts} />}
+
+      {displayProducts && (
+        <div>
+          <Filters setUrlProducts={setUrlProducts} />
+          <ProductList url={urlProducts} />
+        </div>
+      )}
     </div>
   );
 }

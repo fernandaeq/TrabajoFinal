@@ -3,10 +3,11 @@ import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import App from "./App.jsx";
 import CategorieList from "./components/screen/CategorieList/index.jsx";
-import Categorie from "./components/screen/CategorieDetail/index.jsx";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
-import ProductList from "./components/screen/ProductList/index.jsx";
+import Login from "./components/screen/Login/index.jsx";
+import Signin from "./components/screen/Signin/index.jsx";
+import { AuthProvider } from "./components/context/AuthContext.jsx";
 
 const queryClient = new QueryClient();
 const router = createBrowserRouter([
@@ -19,12 +20,12 @@ const router = createBrowserRouter([
     element: <CategorieList />,
   },
   {
-    path: "/categorieDetail/:id",
-    element: <Categorie />,
+    path: "/login",
+    element: <Login />,
   },
   {
-    path: "/productList",
-    element: <ProductList />,
+    path: "/signin",
+    element: <Signin />,
   },
   //mas rutas...
 ]);
@@ -32,8 +33,10 @@ const router = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <QueryClientProvider client={queryClient}>
-      <RouterProvider router={router} />
-      <ReactQueryDevtools />
+      <AuthProvider>
+        <RouterProvider router={router} />
+        <ReactQueryDevtools />
+      </AuthProvider>
     </QueryClientProvider>
   </React.StrictMode>
 );
