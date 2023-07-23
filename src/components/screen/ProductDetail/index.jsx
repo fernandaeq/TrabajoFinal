@@ -1,11 +1,15 @@
 import React from "react";
+import useAuth from "../../../customHooks/useAuth";
+import { Link } from "react-router-dom";
 
 /**
  *
  * @name  ProductDetail
  * @description component that shows the Product Card
  */
-function ProductDetail({ title, img, price }) {
+function ProductDetail({ title, img, price, id }) {
+  const { isAdmin } = useAuth();
+
   return (
     <div
       style={{
@@ -29,6 +33,7 @@ function ProductDetail({ title, img, price }) {
         >
           ${price}
         </p>
+        {isAdmin && <Link to={`/editProduct/${id}`}>edit</Link>}
       </div>
     </div>
   );

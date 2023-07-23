@@ -20,7 +20,13 @@ function ProductList({ url }) {
         const { title, images, price, id } = product;
 
         return (
-          <ProductDetail title={title} img={images[0]} price={price} key={id} />
+          <ProductDetail
+            title={title}
+            img={images[0]}
+            price={price}
+            key={id}
+            id={id}
+          />
         );
       })}
       {isLoading && <p>Cargando...</p>}

@@ -8,6 +8,8 @@ import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import Login from "./components/screen/Login/index.jsx";
 import Signin from "./components/screen/Signin/index.jsx";
 import { AuthProvider } from "./components/context/AuthContext.jsx";
+import AddProduct from "./components/screen/AddProduct/index.jsx";
+import EditProduct from "./components/screen/EditProduct/index.jsx";
 
 const queryClient = new QueryClient();
 const router = createBrowserRouter([
@@ -26,6 +28,14 @@ const router = createBrowserRouter([
   {
     path: "/signin",
     element: <Signin />,
+  },
+  {
+    path: "/addProduct",
+    element: <AddProduct />,
+  },
+  {
+    path: "/editProduct/:id",
+    element: <EditProduct />,
   },
   //mas rutas...
 ]);

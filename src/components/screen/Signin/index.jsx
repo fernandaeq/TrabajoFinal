@@ -33,9 +33,9 @@ function Signin() {
     let name = formData.get("userName");
     let email = formData.get("email");
     let password = formData.get("password");
+    let role = formData.get("admin") ? "admin" : "customer";
     let avatar = "https://placehold.co/400";
-
-    let userData = { name, email, password, avatar };
+    let userData = { name, email, password, role, avatar };
     registerMutation.mutate(userData);
   }
   return (
@@ -56,6 +56,8 @@ function Signin() {
           <input type="email" name="email" placeholder="person@example.com" />
           <label className="loginLabel">Password</label>
           <input type="password" name="password" />
+          <label className="loginLabel">Admin</label>
+          <input type="checkbox" name="admin" />
           <input type="submit" value="SignUp" className="loginLabel" />
         </form>
       </div>

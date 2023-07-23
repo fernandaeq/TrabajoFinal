@@ -5,6 +5,8 @@ export const ACCESS_TOKEN = "access_token";
 
 export function AuthProvider({ children }) {
   const [user, setUser] = useState(localStorage.getItem("access_token"));
+  // const [isAdmin, setIsAdmin] = useState(localStorage.getItem("isAdmin"));
+  const [isAdmin, setIsAdmin] = useState(false);
   /**
    *
    * @name login
@@ -12,8 +14,10 @@ export function AuthProvider({ children }) {
    *
    */
   function login(userData, callback) {
+    console.log(userData, "userdata");
     setUser(userData);
     localStorage.setItem(ACCESS_TOKEN, JSON.stringify(userData.access_token));
+    // localStorage.setItem(isAdmin, JSON.stringify(userData.access_token));
     callback();
   }
 
@@ -26,10 +30,11 @@ export function AuthProvider({ children }) {
   function logout(callback) {
     setUser(null);
     localStorage.removeItem("access_token");
+    localStorage.removeItem("isAdmin");
     callback();
   }
 
-  const value = { user, login, logout };
+  const value = { user, login, logout, isAdmin, setIsAdmin };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 }
