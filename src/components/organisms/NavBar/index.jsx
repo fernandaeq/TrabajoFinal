@@ -24,8 +24,6 @@ function NavBar() {
       fetch(url, requestOptions)
         .then((response) => response.json())
         .then((result) => {
-          // localStorage.setItem(ACCESS_TOKEN, JSON.stringify(userData.access_token));
-
           auth.setIsAdmin(result?.role === "admin");
           return result;
         }),

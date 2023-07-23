@@ -20,6 +20,7 @@ function AddProduct() {
   function handleSubmit(event) {
     event.preventDefault();
     let formData = new FormData(event.currentTarget);
+
     let title = formData.get("title");
     let price = formData.get("price");
     let images = [formData.get("image")];
@@ -32,6 +33,7 @@ function AddProduct() {
   return (
     <div>
       <NavBar />
+      <h1 style={{ textAlign: "center" }}>Add product</h1>
       <form className="centerForm" onSubmit={handleSubmit}>
         <label>Title</label>
         <input type="text" name="title" placeholder="person" />
