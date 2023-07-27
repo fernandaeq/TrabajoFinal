@@ -1,6 +1,7 @@
 import React from "react";
 import useAuth from "../../../customHooks/useAuth";
 import { Link } from "react-router-dom";
+import { useMutation } from "@tanstack/react-query";
 
 /**
  *
@@ -9,7 +10,20 @@ import { Link } from "react-router-dom";
  */
 function ProductDetail({ title, img, price, id }) {
   const { isAdmin } = useAuth();
-
+  const deleteMutation = useMutation({
+    mutationFn: (data) => {
+      return fetch(` https://api.escuelajs.co/api/v1/products/${id}`, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+    },
+    onSuccess: () => {
+      alert("product deleted");
+    },
+  });
   return (
     <div
       style={{
@@ -34,6 +48,11 @@ function ProductDetail({ title, img, price, id }) {
           ${price}
         </p>
         {isAdmin && <Link to={`/editProduct/${id}`}>edit</Link>}
+        {isAdmin && (
+          <p className="btn" onClick={() => deleteMutation.mutate()}>
+            delete
+          </p>
+        )}
       </div>
     </div>
   );

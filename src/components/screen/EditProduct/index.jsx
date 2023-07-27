@@ -30,11 +30,11 @@ function EditProduct() {
     event.preventDefault();
     let formData = new FormData(event.currentTarget);
 
-    let title = formData.get("title") || data.title;
-    let price = formData.get("price") || data.price;
-    let images = [formData.get("image") || data.images[0]];
-    let description = formData.get("description") || data.description;
-    let categoryId = formData.get("category") || data.category.id;
+    let title = formData.get("title") || data?.title;
+    let price = formData.get("price") || data?.price;
+    let images = [formData.get("image") || data?.images[0]];
+    let description = formData.get("description") || data?.description;
+    let categoryId = formData.get("category") || data?.category.id;
 
     let userData = { title, price, images, description, categoryId };
     registerMutation.mutate(userData);
@@ -45,15 +45,15 @@ function EditProduct() {
       <h1 style={{ textAlign: "center" }}>Edit product</h1>
       <form className="centerForm" onSubmit={handleSubmit}>
         <label>Title</label>
-        <input type="text" name="title" placeholder={data.title} />
+        <input type="text" name="title" placeholder={data?.title} />
         <label>Price</label>
-        <input type="number" name="price" placeholder={data.price} />
+        <input type="number" name="price" placeholder={data?.price} />
         <label>Image</label>
-        <input type="text" name="image" placeholder={data.images[0]} />
+        <input type="text" name="image" placeholder={data?.images[0]} />
         <label>Description</label>
-        <input type="text" name="description" placeholder={data.description} />
+        <input type="text" name="description" placeholder={data?.description} />
         <label>Category</label>
-        <input type="text" name="category" placeholder={data.category.id} />
+        <input type="text" name="category" placeholder={data?.category.id} />
         <input type="submit" value="Add" />
       </form>
     </div>

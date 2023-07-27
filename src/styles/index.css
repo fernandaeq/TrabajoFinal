@@ -93,3 +93,7 @@ a:hover {
   flex-direction: column;
   align-items: center;
 }
+.categoryAction:hover {
+  background-color: #7a316f;
+  border-radius: 8px;
+}
