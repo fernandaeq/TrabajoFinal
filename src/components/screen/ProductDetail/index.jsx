@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useContext } from "react";
 import useAuth from "../../../customHooks/useAuth";
 import { Link } from "react-router-dom";
 import { useMutation } from "@tanstack/react-query";
+import { CartContext } from "../../context/CartContext";
 
 /**
  *
@@ -10,6 +11,7 @@ import { useMutation } from "@tanstack/react-query";
  */
 function ProductDetail({ title, img, price, id }) {
   const { isAdmin } = useAuth();
+  const cartState = useContext(CartContext);
   const deleteMutation = useMutation({
     mutationFn: (data) => {
       return fetch(` https://api.escuelajs.co/api/v1/products/${id}`, {
@@ -24,6 +26,9 @@ function ProductDetail({ title, img, price, id }) {
       alert("product deleted");
     },
   });
+  const addToCart = () => {
+    cartState.addToCart({ title, price, id, amount: 1 });
+  };
   return (
     <div
       style={{
@@ -47,6 +52,8 @@ function ProductDetail({ title, img, price, id }) {
         >
           ${price}
         </p>
+        <button onClick={addToCart}>Add to cart</button>
+        <button onClick={() => cartState.getCartState()}>getState</button>
         {isAdmin && <Link to={`/editProduct/${id}`}>edit</Link>}
         {isAdmin && (
           <p className="btn" onClick={() => deleteMutation.mutate()}>
