@@ -15,7 +15,6 @@ export function AuthProvider({ children }) {
   function login(userData, callback) {
     setUser(userData);
     localStorage.setItem(ACCESS_TOKEN, JSON.stringify(userData.access_token));
-    // localStorage.setItem(isAdmin, JSON.stringify(userData.access_token));
     callback();
   }
 
