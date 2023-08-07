@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import useAuth from "../../../customHooks/useAuth";
 import { fetchData } from "../../../helpers";
 import { useQuery } from "@tanstack/react-query";
@@ -106,11 +106,13 @@ function NavBar() {
         </ul>
       )}
       <div>
-        <img
-          src="https://cdn.icon-icons.com/icons2/1473/PNG/512/035shoppingcart_101498.png"
-          alt="carrito"
-          width={25}
-        />
+        <Link to="/cartDetail">
+          <img
+            src="https://cdn.icon-icons.com/icons2/1473/PNG/512/035shoppingcart_101498.png"
+            alt="carrito"
+            width={25}
+          />
+        </Link>
       </div>
     </div>
   );
