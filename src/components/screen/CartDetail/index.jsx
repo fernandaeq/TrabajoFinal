@@ -5,7 +5,7 @@ import CartDetailItem from "../../molecules/CartDetailItem";
 import { useNavigate } from "react-router-dom";
 
 function CartDetail() {
-  const { cart, getCartTotalPrice, addToCart, removeFromCart } =
+  const { cart, getCartTotalPrice, addToCart, removeFromCart, clearCart } =
     useContext(CartContext);
   const totalPrice = getCartTotalPrice();
   const navigate = useNavigate();
@@ -38,6 +38,7 @@ function CartDetail() {
                   onClick={() => {
                     alert("compra realizada");
                     navigate("/");
+                    clearCart();
                   }}
                 >
                   Pagar
