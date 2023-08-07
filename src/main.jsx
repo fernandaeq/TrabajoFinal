@@ -12,6 +12,7 @@ import AddProduct from "./components/screen/AddProduct/index.jsx";
 import EditProduct from "./components/screen/EditProduct/index.jsx";
 import EditCategory from "./components/screen/EditCategory/index.jsx";
 import AddCategory from "./components/screen/AddCategory/index.jsx";
+import { CartProvider } from "./components/context/CartContext.jsx";
 
 const queryClient = new QueryClient();
 const router = createBrowserRouter([
@@ -54,8 +55,10 @@ ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <QueryClientProvider client={queryClient}>
       <AuthProvider>
-        <RouterProvider router={router} />
-        <ReactQueryDevtools />
+        <CartProvider>
+          <RouterProvider router={router} />
+          <ReactQueryDevtools />
+        </CartProvider>
       </AuthProvider>
     </QueryClientProvider>
   </React.StrictMode>

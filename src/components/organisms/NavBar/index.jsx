@@ -32,7 +32,10 @@ function NavBar() {
   const isAdmin = auth?.isAdmin;
 
   return (
-    <div style={{ margin: "0px" }}>
+    <div
+      className="row"
+      style={{ margin: "0px", justifyContent: "space-between" }}
+    >
       {isLoading ? (
         <p>Loading...</p>
       ) : (
@@ -102,6 +105,13 @@ function NavBar() {
           )}
         </ul>
       )}
+      <div>
+        <img
+          src="https://cdn.icon-icons.com/icons2/1473/PNG/512/035shoppingcart_101498.png"
+          alt="carrito"
+          width={25}
+        />
+      </div>
     </div>
   );
 }
