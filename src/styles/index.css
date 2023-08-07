@@ -86,3 +86,14 @@ a:hover {
   margin: 8px 0px;
   text-align: center;
 }
+.centerForm {
+  display: flex;
+  padding-bottom: 20px;
+  margin: 20px 30% 0px;
+  flex-direction: column;
+  align-items: center;
+}
+.categoryAction:hover {
+  background-color: #7a316f;
+  border-radius: 8px;
+}

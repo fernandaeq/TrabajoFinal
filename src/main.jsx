@@ -8,6 +8,10 @@ import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import Login from "./components/screen/Login/index.jsx";
 import Signin from "./components/screen/Signin/index.jsx";
 import { AuthProvider } from "./components/context/AuthContext.jsx";
+import AddProduct from "./components/screen/AddProduct/index.jsx";
+import EditProduct from "./components/screen/EditProduct/index.jsx";
+import EditCategory from "./components/screen/EditCategory/index.jsx";
+import AddCategory from "./components/screen/AddCategory/index.jsx";
 
 const queryClient = new QueryClient();
 const router = createBrowserRouter([
@@ -26,6 +30,22 @@ const router = createBrowserRouter([
   {
     path: "/signin",
     element: <Signin />,
+  },
+  {
+    path: "/addProduct",
+    element: <AddProduct />,
+  },
+  {
+    path: "/addCategory",
+    element: <AddCategory />,
+  },
+  {
+    path: "/editProduct/:id",
+    element: <EditProduct />,
+  },
+  {
+    path: "/editCategory/:id",
+    element: <EditCategory />,
   },
   //mas rutas...
 ]);
