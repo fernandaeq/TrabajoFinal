@@ -14,11 +14,18 @@ export function CartProvider({ children }) {
       setCart([...cart, product]);
     }
   }
-  function removeFromCart(params) {}
-  function getCartState() {
+  function removeFromCart(product) {
+    const indice = cart.findIndex((x) => x.id === product.id);
+    let newCart = [...cart];
+    newCart[indice].amount = newCart[indice].amount - 1;
+    setCart([...newCart]);
+  }
+
+  function getCartTotalPrice() {
     const total = cart.reduce((acc, item) => acc + item.price * item.amount, 0);
+
     return total;
   }
-  const value = { addToCart, removeFromCart, getCartState };
+  const value = { cart, addToCart, removeFromCart, getCartTotalPrice };
   return <CartContext.Provider value={value}>{children}</CartContext.Provider>;
 }

@@ -53,7 +53,7 @@ function ProductDetail({ title, img, price, id }) {
           ${price}
         </p>
         <button onClick={addToCart}>Add to cart</button>
-        <button onClick={() => cartState.getCartState()}>getState</button>
+        <button onClick={() => cartState.getCartTotalPrice()}>getState</button>
         {isAdmin && <Link to={`/editProduct/${id}`}>edit</Link>}
         {isAdmin && (
           <p className="btn" onClick={() => deleteMutation.mutate()}>
